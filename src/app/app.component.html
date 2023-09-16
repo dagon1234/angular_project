@@ -1,4 +1,10 @@
 <!-- app.component.html -->
 
-<app-quiz></app-quiz>
-<app-admin></app-admin>
+<nav>
+  <ul>
+    <li><a routerLink="/user">User</a></li>
+    <li><a routerLink="/admin">Admin</a></li>
+  </ul>
+</nav>
+
+<router-outlet></router-outlet>
