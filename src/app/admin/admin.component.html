@@ -1,0 +1,55 @@
+<div *ngFor="let quiz of quizzes">
+  <!-- Display quiz details -->
+  <h2>{{ quiz.question }}</h2>
+  <p>{{ quiz.img }}</p>
+  <ul>
+    <li *ngFor="let choice of quiz.choices">{{ choice }}</li>
+  </ul>
+
+  <!-- Edit button to show/hide the edit form -->
+  <button (click)="showEditForm(quiz)">Edit</button>
+
+  <!-- Delete button -->
+  <button (click)="deleteQuiz(quiz.id)">Delete</button>
+
+  <!-- Edit form (hidden by default) -->
+  <div [hidden]="!quiz.isEditing">
+    <h2>Edit Quiz</h2>
+    <label for="editQuestion">Question:</label>
+    <input
+      type="text"
+      id="editQuestion"
+      [(ngModel)]="quiz.editedQuestion"
+      required
+    />
+
+    <label for="editImg">Image URL:</label>
+    <input type="text" id="editImg" [(ngModel)]="quiz.editedImg" />
+
+    <label for="editChoices">Choices (comma-separated):</label>
+    <input
+      type="text"
+      id="editChoices"
+      [(ngModel)]="quiz.editedChoices"
+      required
+    />
+
+    <button (click)="updateQuiz(quiz)">Update</button>
+    <button (click)="cancelEdit(quiz)">Cancel</button>
+  </div>
+</div>
+
+<!-- Add a form for creating a new quiz -->
+<form (submit)="createQuiz(newQuiz)">
+  <h2>Create a New Quiz</h2>
+  <label for="question">Question:</label>
+  <input type="text" id="question" [(ngModel)]="newQuiz.question" required />
+
+  <label for="img">Image URL:</label>
+  <input type="text" id="img" [(ngModel)]="newQuiz.img" />
+
+  <label for="choices">Choices (comma-separated):</label>
+  <input type="text" id="choices" [(ngModel)]="newQuiz.choices" required />
+
+  <button type="submit">Create</button>
+</form>

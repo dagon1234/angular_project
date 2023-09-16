@@ -1,0 +1,9 @@
+<!-- quiz.component.html -->
+
+<div *ngFor="let quiz of quizzes">
+  <h2>{{ quiz.question }}</h2>
+  <p>{{ quiz.img }}</p>
+  <ul>
+    <li *ngFor="let choice of quiz.choices">{{ choice }}</li>
+  </ul>
+</div>
