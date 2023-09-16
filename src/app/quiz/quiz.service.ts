@@ -13,10 +13,6 @@ export class QuizService {
 
   constructor(private http: HttpClient) {}
 
-  getAllQuizzes(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
-  }
-
   getQuiz(): Observable<Quiz> {
     return this.http.get<Quiz>(this.apiUrl);
   }

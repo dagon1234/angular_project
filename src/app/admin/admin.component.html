@@ -1,3 +1,5 @@
+<!-- admin.component.html -->
+
 <div *ngFor="let quiz of quizzes">
   <!-- Display quiz details -->
   <h2>{{ quiz.question }}</h2>
@@ -5,6 +7,13 @@
   <ul>
     <li *ngFor="let choice of quiz.choices">{{ choice }}</li>
   </ul>
+
+  <div *ngFor="let question of quiz.questions">
+    <h2>{{ question.text }}</h2>
+    <button (click)="toggleCorrect(question)">
+      {{ question.isCorrect ? "Mark Incorrect" : "Mark Correct" }}
+    </button>
+  </div>
 
   <!-- Edit button to show/hide the edit form -->
   <button (click)="showEditForm(quiz)">Edit</button>

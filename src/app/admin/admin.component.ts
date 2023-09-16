@@ -1,5 +1,8 @@
+// admin.component.ts
+
 import { Component, OnInit } from '@angular/core';
 import { QuizServiceAdmin } from './admin.service';
+import { Question } from './admin.model';
 
 @Component({
   selector: 'app-admin',
@@ -27,6 +30,10 @@ export class QuizComponentAdmin implements OnInit {
         quiz.editedChoices = '';
       });
     });
+  }
+
+  toggleCorrect(question: Question): void {
+    question.isCorrect = !question.isCorrect;
   }
 
   deleteQuiz(id: number): void {

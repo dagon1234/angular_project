@@ -12,7 +12,7 @@ import { Quiz, Question } from './quiz.model';
 export class QuizComponent implements OnInit {
     quiz: Quiz | undefined;
     selectedAnswers: { [key: number]: string } = {};
-    score: number = 0; // Initialize to 0
+    score: number = 0;
   
     constructor(private quizService: QuizService) {}
   
@@ -35,7 +35,7 @@ export class QuizComponent implements OnInit {
         return;
       }
   
-      this.score = 0; // Reset score to 0
+      this.score = 0;
   
       this.quiz.questions.forEach((question) => {
         const selectedChoice = this.selectedAnswers[question.id];
