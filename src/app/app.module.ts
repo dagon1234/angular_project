@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { QuizComponentAdmin } from './admin/admin.component';
+import { FormsModule } from '@angular/forms'; 
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { QuizComponentAdmin } from './admin/admin.component';
     QuizComponentAdmin
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule
   ],

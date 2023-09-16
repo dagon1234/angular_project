@@ -8,6 +8,7 @@ import { QuizServiceAdmin } from './admin.service';
 })
 export class QuizComponentAdmin implements OnInit {
   quizzes: any[] | undefined;
+  newQuiz: any;
 
   constructor(private quizService: QuizServiceAdmin) {}
 
@@ -64,5 +65,27 @@ export class QuizComponentAdmin implements OnInit {
   // Cancel editing and hide the edit form
   cancelEdit(quiz: any): void {
     quiz.isEditing = false;
+  }
+
+  createQuiz(newQuiz: any): void {
+    // Split the comma-separated choices into an array
+    const choicesArray = newQuiz.choices.split(',');
+  
+    // Create a new quiz object with the input data
+    const quiz = {
+      question: newQuiz.question,
+      img: newQuiz.img,
+      choices: choicesArray,
+    };
+  
+    // Send a request to create the quiz using the quizService
+    this.quizService.createQuiz(quiz).subscribe((createdQuiz) => {
+      // Handle the response from the server (the created quiz)
+      // You can add error handling here as well
+      console.log('New quiz created:', createdQuiz);
+  
+      // Reload the quizzes after creation
+      this.loadQuizzes();
+    });
   }
 }
