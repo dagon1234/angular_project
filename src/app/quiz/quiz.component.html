@@ -1,9 +1,24 @@
 <!-- quiz.component.html -->
 
-<div *ngFor="let quiz of quizzes">
-  <h2>{{ quiz.question }}</h2>
-  <p>{{ quiz.img }}</p>
-  <ul>
-    <li *ngFor="let choice of quiz.choices">{{ choice }}</li>
-  </ul>
+<div *ngIf="quiz">
+  <h1>Quiz</h1>
+  <div *ngFor="let question of quiz.questions">
+    <h2>{{ question.text }}</h2>
+    <ul>
+      <li *ngFor="let choice of question.choices">
+        <label>
+          <input
+            type="radio"
+            [(ngModel)]="selectedAnswers[question.id]"
+            [value]="choice"
+          />
+          {{ choice }}
+        </label>
+      </li>
+    </ul>
+  </div>
+  <button (click)="checkAnswers()">Check Answers</button>
+  <div *ngIf="score !== null">
+    <h2>Your Score: {{ score }} / {{ quiz.questions.length }}</h2>
+  </div>
 </div>

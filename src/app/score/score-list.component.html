@@ -1,0 +1,21 @@
+<!-- score-list.component.html -->
+
+<div>
+  <h1>Scores</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Player Name</th>
+        <th>Score</th>
+        <th>Play Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let score of scores">
+        <td>{{ score.playerName }}</td>
+        <td>{{ score.score }}</td>
+        <td>{{ score.playDate }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
